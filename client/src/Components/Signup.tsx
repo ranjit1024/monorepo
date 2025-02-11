@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import {Link, useNavigate} from 'react-router-dom';
-import {useSetRecoilState} from "recoil";
-import {authState} from "../store/authState.js";
+import { Link, useNavigate } from 'react-router-dom';
+import { useSetRecoilState } from "recoil";
+import { authState } from "../store/authState.js";
 
 const Signup = () => {
     const [username, setUsername] = useState('');
@@ -17,14 +17,14 @@ const Signup = () => {
         const data = await response.json();
         if (data.token) {
             localStorage.setItem("token", data.token)
-            window.location = "/todos";
+
         } else {
             alert("Error while signing up");
         }
     };
 
     return (
-        <div style={{justifyContent: "center", display: "flex", width: "100%"}}>
+        <div style={{ justifyContent: "center", display: "flex", width: "100%" }}>
             <div>
                 <h2>Signup</h2>
                 <input type='text' value={username} onChange={(e) => setUsername(e.target.value)} placeholder='Username' />
