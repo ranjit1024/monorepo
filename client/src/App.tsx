@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react';
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import {RecoilRoot} from 'recoil';
+import { useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { RecoilRoot } from 'recoil';
 import Login from './Components/Login';
 import Signup from './Components/Signup';
 import TodoList from './Components/TodoList';
@@ -8,7 +8,6 @@ import { useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 import { authState } from './store/authState.js';
 import useSWR from 'swr'
-
 
 function App() {
     return (
@@ -26,12 +25,12 @@ function App() {
     );
 }
 
-const fetcher = ({url}: {url: string,}) => fetch(url, {
+const fetcher = ({ url }: { url: string, }) => fetch(url, {
     headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
 }).then((res) => res.json());
 
 function InitState() {
-    const { data, error, isLoading } = useSWR({url: 'http://localhost:3000/auth/me'}, fetcher)
+    const { data, error, isLoading } = useSWR({ url: 'http://localhost:3000/auth/me' }, fetcher)
     console.log(data);
     return <></>
 }
@@ -62,6 +61,4 @@ function InitState2() {
     }, [])
     return <></>
 }
-
 export default App;
-
